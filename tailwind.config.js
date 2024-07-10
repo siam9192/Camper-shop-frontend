@@ -9,7 +9,7 @@ export default {
   theme: {
     extend: {
       colors:{
-        primary_color:"#64379f",
+        primary_color:"#370D7B",
         secondary_color:"#5D80F0",
         button_color:"#27104e",
         info_color:"#3DEFC0"

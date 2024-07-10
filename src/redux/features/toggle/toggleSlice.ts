@@ -1,24 +1,21 @@
-import { createSlice } from "@reduxjs/toolkit/react";
+import { createSlice } from '@reduxjs/toolkit/react';
 
 type TInitialState = {
-    isSidebarOpen:boolean
-}
-const initialState:TInitialState = {
-    isSidebarOpen:false
-}
+  isSidebarOpen: boolean;
+};
+const initialState: TInitialState = {
+  isSidebarOpen: false,
+};
 const toggleSlice = createSlice({
-    name:"toggle",
-    initialState,
-    reducers:{
-        toggleSidebar:(state)=>{
-         state.isSidebarOpen = !state.isSidebarOpen
-        }
-    }
-})
+  name: 'toggle',
+  initialState,
+  reducers: {
+    toggleSidebar: (state) => {
+      state.isSidebarOpen = !state.isSidebarOpen;
+    },
+  },
+});
 
+export const { toggleSidebar } = toggleSlice.actions;
 
-
-export const {toggleSidebar} = toggleSlice.actions
-
-
-export default toggleSlice.reducer
+export default toggleSlice.reducer;

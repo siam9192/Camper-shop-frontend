@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
 
-import MainLayout from './components/layout/MainLayout'
-import "preline/preline";
-import { IStaticMethods } from "preline/preline";
+import MainLayout from './components/layout/MainLayout';
+import 'preline/preline';
+import { IStaticMethods } from 'preline/preline';
 declare global {
   interface Window {
     HSStaticMethods: IStaticMethods;
@@ -12,11 +12,9 @@ declare global {
 }
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
-  return (
-      <MainLayout/>
-  )
+  return <MainLayout />;
 }
 
-export default App
+export default App;

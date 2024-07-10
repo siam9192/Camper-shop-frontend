@@ -1,22 +1,28 @@
-import React from 'react'
+import React from 'react';
 
 const Hero = () => {
-    const images = ["/images/slider-1.jpg","/images/slider-2.jpg"]
+  const images = ['/images/slider-1.jpg', '/images/slider-2.jpg'];
   return (
-    <div   className='min-h-[90vh] py-10  grid md:grid-cols-2 grid-cols-1 md:gap-10 gap-5'>
-        <div className=' space-y-10'>
-        <div className='space-y-3'>
-        <h1  className=' md:text-5xl text-3xl font-bold text-gray-900'>Welcome to Capmers Shop - Your Ultimate Destination for Outdoor Adventures</h1>
-        <p>Discover Premium Camping Gear, Apparel, and Essentials</p>
+    <div className="min-h-[90vh] py-10  grid md:grid-cols-2 grid-cols-1 md:gap-10 gap-5">
+      <div className=" space-y-10">
+        <div className="space-y-3">
+          <h1 className=" md:text-5xl text-3xl font-bold text-gray-900">
+            Welcome to Capmers Shop - Your Ultimate Destination for Outdoor
+            Adventures
+          </h1>
+          <p>Discover Premium Camping Gear, Apparel, and Essentials</p>
         </div>
-         <h2 className=' text-2xl font-medium text-secondary_color'>Get up to 40% discount on your first order</h2>
-         <button className='px-6 py-3 rounded-lg bg-button_color hover:bg-primary_color text-white uppercase'>Explore Now</button>
-        </div>
-        <div>
-      
+        <h2 className=" text-2xl font-medium text-secondary_color">
+          Get up to 40% discount on your first order
+        </h2>
+        <button className="px-6 py-3 rounded-lg bg-button_color hover:bg-primary_color text-white uppercase">
+          Explore Now
+        </button>
+      </div>
+      <div>
         <img src={images[1]} alt="" />
-       
-{/* <div data-hs-carousel='{
+
+        {/* <div data-hs-carousel='{
   "loadingClasses": "opacity-0",
     "isAutoPlay": true
   }'  className="relative">
@@ -46,11 +52,9 @@ const Hero = () => {
   </div>
   
 </div> */}
-
-
-        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;
