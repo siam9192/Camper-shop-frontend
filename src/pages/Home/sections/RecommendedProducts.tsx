@@ -3,6 +3,8 @@ import Button from "../../../components/ui/Button"
 import ProductCard from "../../../components/ui/ProductCard"
 import { useGetProductsQuery, useGetRecommendedProductsQuery } from "../../../redux/features/Products/Products.api"
 import { TProduct } from "../../../types"
+import { loadingItems } from "../../../utils/constant"
+import ProductLoadingCard from "../../../components/ui/ProductLoadingCard"
 
 
 const RecommendedProducts = () => {
@@ -17,11 +19,12 @@ const RecommendedProducts = () => {
       <p className=" text-center text-gray-800 font-medium">Recommended For You: Personalized Gear Picks for Your Outdoor Adventures</p>
       </div>
         <div className="py-5 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 md:gap-5 gap-3 font-jakarta">
-           {
-            products.map((product:TProduct,index:number)=>{
-                return <ProductCard product={product} key={index}/>
-            })
-           }
+        {
+            isLoading ?
+            loadingItems.map((item:any,index:number)=> <ProductLoadingCard/>)
+            :
+            products.map((product:any,index:number)=> <ProductCard product = {product} key={index}/>)
+            }
         </div>
        <div className="text-center">
       <Link to="/products">

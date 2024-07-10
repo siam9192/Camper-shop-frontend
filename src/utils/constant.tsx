@@ -1,5 +1,6 @@
 import { IconType } from "react-icons";
 import { AiOutlineProduct } from "react-icons/ai";
+import { FaRegStar, FaStar, FaStarHalf } from "react-icons/fa";
 import { FiInfo } from "react-icons/fi";
 import { GoHome } from "react-icons/go";
 import { SiManageiq } from "react-icons/si";
@@ -58,3 +59,5 @@ import { SiManageiq } from "react-icons/si";
     icon:FiInfo
    }
   ]
+
+ export const loadingItems = [1,2,3,4,5,6,7,8]

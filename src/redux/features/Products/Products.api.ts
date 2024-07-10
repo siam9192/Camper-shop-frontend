@@ -8,6 +8,12 @@ const productApi = baseApi.injectEndpoints({
                 method:"GET"
             })
         }),
+        getProduct:builder.query({
+            query:(id:string)=>({
+                url:`/products/${id}`,
+                method:"GET"
+            })
+        }),
         getRecommendedProducts:builder.query({
             query:(query)=>({
                 url:`/products/recommended`,
@@ -19,4 +25,4 @@ const productApi = baseApi.injectEndpoints({
 })
 
 
-export const {useGetProductsQuery,useGetRecommendedProductsQuery} = productApi
+export const {useGetProductsQuery,useGetProductQuery,useGetRecommendedProductsQuery} = productApi

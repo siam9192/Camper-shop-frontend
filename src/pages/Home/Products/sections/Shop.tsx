@@ -1,16 +1,37 @@
 
+import { useState } from "react"
 import ProductCard from "../../../../components/ui/ProductCard"
+import ProductLoadingCard from "../../../../components/ui/ProductLoadingCard"
 
 import { useGetProductsQuery } from "../../../../redux/features/Products/Products.api"
+import { useNavigate } from "react-router-dom"
+import queryString from "query-string"
+import { loadingItems } from "../../../../utils/constant"
 
+
+const generatePages = (totalItem:number,perPage:number)=>{
+
+const pages:number[] = []
+const totalPage:number = Math.ceil(totalItem / perPage)
+
+for(let i = 1; i <= totalPage;i++){
+pages.push(i)
+}
+
+return pages
+}
 
 const Shop = () => {
 
   const searchParams = window.location.search
   
-  const {data} = useGetProductsQuery(searchParams)
-  const products = data?.data || []
-  const currentPage = 1
+  const {data,isLoading,refetch} = useGetProductsQuery(searchParams)
+  const [currentPage,setCurrentPage] = useState(1)
+  const navigate = useNavigate()
+  const products = data?.data.products || []
+  const totalProduct = data?.data?.totalProduct || 0
+  const pages = generatePages(totalProduct,6)
+  
   const options = [
     {
        display:"DEFAULT SORTING" ,
@@ -23,12 +44,21 @@ const Shop = () => {
         
      }
   ]
-  const pages = [1,2,4,56,484.4764]
+
+  const changePage = (page:number)=>{
+   setCurrentPage(page)
+   const query = queryString.parse(searchParams)
+   const searchQuery = queryString.stringify({...query,currentPage:page})
+
+   navigate(`?${searchQuery}`)
+   refetch()
+  }
+ 
   return (
     <div className="lg:w-[80%]">
          <div className=" flex justify-between items-center">
           <div>
-          <h2 className=" text-black font-bold uppercase md:block hidden">Showing 1-12 of 20 results</h2>
+          <h2 className=" text-black font-bold uppercase md:block hidden">Showing 1-12 of {totalProduct} results</h2>
           </div>
            <select name="" id="" className=" bg-transparent p-2 uppercase text-black font-bold">
             <option value="" defaultChecked>Default Sorting</option>
@@ -36,17 +66,20 @@ const Shop = () => {
            </select>
          </div>
         
-        <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {
-             products.map((product:any,index:number)=> <ProductCard product = {product} key={index}/>)
+            isLoading ?
+            loadingItems.map((item:any,index:number)=> <ProductLoadingCard/>)
+            :
+            products.map((product:any,index:number)=> <ProductCard product = {product} key={index}/>)
             }
            </div>
 
            <div className="flex items-center gap-2">
             {
                 pages.map((page,index)=>{
-                    return <div className={`px-4 py-2 border border-primary_color text-center text-black  hover:bg-primary_color hover:text-white hover:cursor-pointer ${currentPage === index ? "bg-info_color" : ""}`}>
-                       {index+1}
+                    return <div onClick={()=>changePage(page)} className={`px-4 py-2 border border-primary_color text-center text-black  hover:bg-primary_color hover:text-white hover:cursor-pointer ${currentPage === page ? "bg-info_color" : ""}`}>
+                       {page}
                     </div>
                 })
             }

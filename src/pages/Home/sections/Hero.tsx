@@ -14,9 +14,9 @@ const Hero = () => {
         </div>
         <div>
       
-      
+        <img src={images[1]} alt="" />
        
-<div data-hs-carousel='{
+{/* <div data-hs-carousel='{
   "loadingClasses": "opacity-0",
     "isAutoPlay": true
   }'  className="relative">
@@ -44,7 +44,8 @@ const Hero = () => {
     })
    }
   </div>
-</div>
+  
+</div> */}
 
 
         </div>
