@@ -1,4 +1,6 @@
+import { navRoutes } from '../../utils/constant';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -11,8 +13,13 @@ const Footer = () => {
               href="#"
               aria-label="Brand"
             >
-              Brand
+            Camper shop
             </a>
+            <h2 className=' text-white'>
+            Acme Corporation
+123 Main Street
+Anytown, USA 12345
+            </h2>
           </div>
 
           <div className="col-span-1">
@@ -50,41 +57,18 @@ const Footer = () => {
             <h4 className="font-semibold text-gray-100">Company</h4>
 
             <div className="mt-3 grid space-y-3">
-              <p>
-                <a
-                  className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 dark:text-neutral-400 dark:hover:text-neutral-200"
-                  href="#"
+            {
+              navRoutes.map((route)=>{
+               return <p>
+                <Link to={route.path}
+                  className="inline-flex gap-x-2 uppercase text-gray-400 hover:text-gray-200 dark:text-neutral-400 dark:hover:text-neutral-200"
+               
                 >
-                  About us
-                </a>
+                {route.name}
+                </Link>
               </p>
-              <p>
-                <a
-                  className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 dark:text-neutral-400 dark:hover:text-neutral-200"
-                  href="#"
-                >
-                  Blog
-                </a>
-              </p>
-              <p>
-                <a
-                  className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 dark:text-neutral-400 dark:hover:text-neutral-200"
-                  href="#"
-                >
-                  Careers
-                </a>{' '}
-                <span className="inline ms-1 text-xs bg-blue-700 text-white py-1 px-2 rounded-lg">
-                  We're hiring
-                </span>
-              </p>
-              <p>
-                <a
-                  className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 dark:text-neutral-400 dark:hover:text-neutral-200"
-                  href="#"
-                >
-                  Customers
-                </a>
-              </p>
+              })
+            }
             </div>
           </div>
 

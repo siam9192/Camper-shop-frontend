@@ -4,9 +4,11 @@ import { FaRegStar, FaStar, FaStarHalf } from 'react-icons/fa';
 import { FiInfo } from 'react-icons/fi';
 import { GoHome } from 'react-icons/go';
 import { SiManageiq } from 'react-icons/si';
+import { Bounce, toast } from 'react-toastify';
 
 export const productCategories = [
   'Tents',
+  'Shelter',
   'Sleeping Bags',
   'Backpacks',
   'Camp Furniture',
@@ -57,5 +59,39 @@ export const navRoutes: TNavRoute[] = [
     icon: FiInfo,
   },
 ];
+
+export const toastSuccess = (message:string)=> toast.success(message, {
+  position: "top-right",
+  autoClose: 2000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "dark",
+  transition: Bounce,
+});
+export const toastError = (message:string)=> toast.error(message, {
+position: "top-right",
+autoClose: 2000,
+hideProgressBar: false,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "dark",
+transition: Bounce,
+});
+
+export const generatePages = (totalItem: number, perPage: number) => {
+  const pages: number[] = [];
+  const totalPage: number = Math.ceil(totalItem / perPage);
+
+  for (let i = 1; i <= totalPage; i++) {
+    pages.push(i);
+  }
+
+  return pages;
+};
 
 export const loadingItems = [1, 2, 3, 4, 5, 6, 7, 8];

@@ -6,8 +6,9 @@ type TCartTableProps = {
 };
 
 const CartTable = ({ products }: TCartTableProps) => {
+  
   return (
-    <div className="pt-10 w-full">
+    <div className=" w-full">
       <div className="flex flex-col">
         <div className="">
           <div className="p-1.5 min-w-full inline-block align-middle">

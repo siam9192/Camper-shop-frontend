@@ -7,6 +7,7 @@ export type TProduct = {
   description: string;
   price: number;
   stock: number;
+  quantity:number;
   category: string;
   rating: number;
   isDeleted: boolean;
@@ -20,6 +21,7 @@ export type TProductCategory = {
 export type TCartProduct = {
   _id: string;
   name: string;
+  images:string;
   category: string;
   price: number;
   quantity: number;

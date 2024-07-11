@@ -9,7 +9,7 @@ import { TProduct } from '../../../types';
 import { loadingItems } from '../../../utils/constant';
 import ProductLoadingCard from '../../../components/ui/ProductLoadingCard';
 
-const RecommendedProducts = () => {
+const FeaturedProducts = () => {
   const { data, isLoading } = useGetRecommendedProductsQuery(undefined);
   const products = data?.data || [];
 
@@ -17,7 +17,7 @@ const RecommendedProducts = () => {
     <div className=" md:py-10 py-5">
       <div className=" space-y-2">
         <h1 className=" md:text-4xl text-2xl font-semibold text-center">
-          Recommended For You
+          Featured Products
         </h1>
         <p className=" text-center text-gray-800 font-medium">
           Recommended For You: Personalized Gear Picks for Your Outdoor
@@ -42,4 +42,4 @@ const RecommendedProducts = () => {
   );
 };
 
-export default RecommendedProducts;
+export default FeaturedProducts;

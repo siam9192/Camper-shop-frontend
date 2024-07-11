@@ -3,8 +3,8 @@ import { Outlet, useLocation } from 'react-router-dom';
 import WidthLayout from './WidthLayout';
 import Header from './Header';
 import Footer from './Footer';
-import Sidebar from '../ui/Sidebar';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const MainLayout = () => {
   const { pathname } = useLocation();
 
@@ -16,7 +16,8 @@ const MainLayout = () => {
         <Outlet />
       </WidthLayout>
       {!hiddenPaths.includes(pathname) && <Footer />}
-      <Sidebar />
+    
+      <ToastContainer/>
     </div>
   );
 };

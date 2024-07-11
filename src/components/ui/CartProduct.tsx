@@ -1,5 +1,6 @@
+import { removeCartItem } from '../../redux/features/cart/cartSlice';
 import { useAppDispatch } from '../../redux/hook';
-import { TCartProduct } from '@/types';
+import { TCartProduct } from '../../types';
 import { useState } from 'react';
 import { RxCross2 } from 'react-icons/rx';
 
@@ -24,13 +25,13 @@ const CartProduct = ({ product }: TCartProductProps) => {
   };
 
   const handleRemoveProduct = () => {
-    //  dispatch()
+     dispatch(removeCartItem(product._id))
   };
   return (
     <div className="flex items-center justify-between border-b py-5">
       <div>
         <img
-          src="/images/bag1.jpg"
+          src={product.images[0]}
           className="md:w-32 md:h-32 w-10 h-10"
           alt=""
         />
@@ -77,7 +78,7 @@ const CartProduct = ({ product }: TCartProductProps) => {
 
       {/* Delete */}
       <div>
-        <span className="inline-flex justify-center items-center size-[25px] md:size-[46px] rounded-full bg-gray-50 text-gray-800 dark:bg-neutral-700 dark:text-neutral-400">
+        <span onClick={handleRemoveProduct} className="inline-flex justify-center items-center size-[25px] md:size-[46px] rounded-full bg-gray-50 text-gray-800 dark:bg-neutral-700 dark:text-neutral-400">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -93,11 +94,6 @@ const CartProduct = ({ product }: TCartProductProps) => {
             />
           </svg>
         </span>
-      </div>
-      <div>
-        <button className="text-white bg-button_color px-3 rounded-full">
-          Buy
-        </button>
       </div>
     </div>
   );

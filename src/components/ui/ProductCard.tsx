@@ -11,7 +11,7 @@ const ProductCard = ({ product }: TProductCardProps) => {
   return (
     <Link to={`/products/${product._id}`}>
       <div className="p-5 bg-white rounded">
-        <img src="/images/bag1.jpg" className="w-full" alt="" />
+        <img src={product.images[0] || "/images/bag1.jpg"} className="w-full" alt="" />
 
         <div className="py-5 space-y-2">
           <div className=" flex justify-between items-center">

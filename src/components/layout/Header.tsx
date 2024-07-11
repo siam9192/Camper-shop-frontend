@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from '../../redux/hook';
 import toggleSlice, {
   toggleSidebar,
 } from '../../redux/features/toggle/toggleSlice';
+import Sidebar from '../ui/Sidebar';
 type TNavigaion = {
   name: string;
   path: string;
@@ -82,12 +83,7 @@ const Header = () => {
               value={cartItems}
               path="/my-cart"
             ></IconButton>
-            <IconButton
-              icon={HiMenuAlt3}
-              size="25px"
-              clickFun={openSidebar}
-              className="lg:hidden"
-            ></IconButton>
+            <Sidebar/>
           </div>
         </div>
       </WidthLayout>

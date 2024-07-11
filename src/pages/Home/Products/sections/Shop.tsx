@@ -2,21 +2,12 @@ import { useState } from 'react';
 import ProductCard from '../../../../components/ui/ProductCard';
 import ProductLoadingCard from '../../../../components/ui/ProductLoadingCard';
 
-import { useGetProductsQuery } from '../../../../redux/features/Products/Products.api';
+import { useGetProductsQuery } from '../../../../redux/features/Products/products.api';
 import { useNavigate } from 'react-router-dom';
 import queryString from 'query-string';
-import { loadingItems } from '../../../../utils/constant';
+import { loadingItems,generatePages } from '../../../../utils/constant';
 
-const generatePages = (totalItem: number, perPage: number) => {
-  const pages: number[] = [];
-  const totalPage: number = Math.ceil(totalItem / perPage);
 
-  for (let i = 1; i <= totalPage; i++) {
-    pages.push(i);
-  }
-
-  return pages;
-};
 
 const Shop = () => {
   const searchParams = window.location.search;
@@ -62,7 +53,7 @@ const Shop = () => {
       <div className=" flex justify-between items-center">
         <div>
           <h2 className=" text-black font-bold uppercase md:block hidden">
-            Showing 1-12 of {totalProduct} results
+            Showing {pages.length*(currentPage-1)+1}-{pages.length*(currentPage-1)+products.length} of {totalProduct} results
           </h2>
         </div>
         <select

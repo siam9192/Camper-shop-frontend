@@ -6,6 +6,8 @@ import { AiOutlineStock } from 'react-icons/ai';
 import { LuPencilLine } from 'react-icons/lu';
 import { useAppDispatch, useAppSelector } from '../../../redux/hook';
 import { addToCart } from '../../../redux/features/cart/cartSlice';
+import { toastSuccess } from '../../../utils/constant';
+
 
 type TProductDetailsProps = {
   product: TProduct;
@@ -27,6 +29,7 @@ const ProductDetails = ({ product }: TProductDetailsProps) => {
     };
     const findItem = cartItems.find((item) => item.id === cartData.id);
     if (findItem) {
+      toastSuccess("Item already on your cart")
       return;
     }
     dispatch(addToCart(cartData));
@@ -54,7 +57,7 @@ const ProductDetails = ({ product }: TProductDetailsProps) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-1 ">
           <InputNumber quantity={quantity} setQuantity={handleQuantity} />
           <button
-            onClick={handleAddToCart}
+            onClick={handleAddToCart} disabled={product.stock < product.quantity}
             className="w-full  py-4 uppercase font-bold bg-button_color text-white disabled:bg-gray-300"
           >
             Add to cart
@@ -80,10 +83,7 @@ const ProductDetails = ({ product }: TProductDetailsProps) => {
           </span>
           <p className="font-semibold text-gray-600">
             {product.description}
-            First useState takes a generic, which will be your IUser. If you
-            then want to pass around the second destructured element that is
-            returned by useState you will need to import Dispatch. Consider this
-            extended version of your example that has a click handler:
+            
           </p>
         </div>
       </div>
