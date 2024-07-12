@@ -4,8 +4,11 @@ import React, { useEffect, useState } from 'react';
 import UpdateProductForm from './sections/UpdateProductForm';
 import CreateProductForm from './sections/CreateProductForm';
 import Pagination from '../../components/ui/Pagination';
-import { generatePages } from '../../utils/constant';
+import { generatePages, openModal } from '../../utils/constant';
 import ManageProductCard from '../../components/ui/ManageProductCard';
+import ProductCreateForm from './sections/ProductCreateForm';
+import { useAppDispatch } from '../../redux/hook';
+import { toggleProductCreateForm } from '../..//redux/features/toggle/toggleSlice';
 
 const ManageProducts = () => {
   const [currentPage,setCurrentPage ]= useState(1)
@@ -13,7 +16,7 @@ const ManageProducts = () => {
   const products = data?.data.products || [];
   const totalProduct = data?.data.totalProduct || 0
   const pages = generatePages(totalProduct,6)
- 
+   
 
   useEffect(()=>{
   refetch()
@@ -22,13 +25,20 @@ const ManageProducts = () => {
   const handleCurrentPage = (value:number)=>{
     setCurrentPage(value)
   }
+  
+  const openProductAddForm = ()=>{
+    openModal("hs-full-screen-modal-1")
+  }
   return (
-    <div>
+    <div className='min-h-[88vh]'>
       <div>
-        <h1 className=" text-3xl text-black font-extrabold">Manage Products</h1>
-        <div className="py-5">
-        <CreateProductForm/>
-          <div className="flex flex-col">
+        <h1 className=" text-3xl text-black font-extrabold pt-5">Manage Products</h1>
+        <div className="py-5 ">
+      <div className=' flex justify-end'>
+      <button onClick={openProductAddForm} className=' text-white bg-button_color px-4 py-2'>Add Product +</button>
+      </div>
+      <div/>
+          <div className="flex flex-col min-h-[50vh]">
             <div className="-m-1.5 overflow-x-auto">
               <div className="p-1.5 min-w-full m inline-block align-middle">
                 <div className="overflow-hidden">
@@ -74,11 +84,14 @@ const ManageProducts = () => {
             </div>
           </div>
          <div className='py-4'>
-         <Pagination currentPage={currentPage} setCurrentPage = {handleCurrentPage} pages={pages}/>
+        {products.length &&   <Pagination currentPage={currentPage} setCurrentPage = {handleCurrentPage} pages={pages}/>}
          </div>
         </div>
+       
+        
       </div>
-     
+      <ProductCreateForm/>
+    <UpdateProductForm/>
     </div>
   );
 };

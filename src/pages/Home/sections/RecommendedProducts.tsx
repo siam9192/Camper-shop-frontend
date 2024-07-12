@@ -8,14 +8,15 @@ import {
 import { TProduct } from '../../../types';
 import { loadingItems } from '../../../utils/constant';
 import ProductLoadingCard from '../../../components/ui/ProductLoadingCard';
+import SectionContainer from '../../../components/layout/SectionContainer';
 
 const RecommendedProducts = () => {
   const { data, isLoading } = useGetRecommendedProductsQuery(undefined);
   const products = data?.data || [];
 
   return (
-    <div className=" md:py-10 py-5">
-      <div className=" space-y-2">
+    <SectionContainer>
+        <div className="py-10 space-y-2">
         <h1 className=" md:text-4xl text-2xl font-semibold text-center">
           Recommended For You
         </h1>
@@ -33,12 +34,12 @@ const RecommendedProducts = () => {
               <ProductCard product={product} key={index} />
             ))}
       </div>
-      <div className="text-center">
+      <div className="text-center py-5">
         <Link to="/products">
           <Button text="View More Product" />
         </Link>
       </div>
-    </div>
+    </SectionContainer>
   );
 };
 

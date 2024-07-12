@@ -26,7 +26,7 @@ const productCategories: TProductCategory[] = [
     icon: MdOutlineElectricBike,
   },
   {
-    name: 'Electronics & Gadgets',
+    name: 'Cookings',
     icon: GiCampCookingPot,
   },
 ];
@@ -47,8 +47,8 @@ const Categories = () => {
         {productCategories.map((category, index) => {
           return (
             <Link to={`/products?category=${category.name}`}>
-              <div className=" bg-info_color space-y-2  p-10" key={index}>
-                <div className=" text-5xl text-primary_color flex justify-center items-center">
+              <div className=" flex flex-col h-full bg-info_color space-y-2  p-10" key={index}>
+                <div className=" text-3xl md:text-5xl text-primary_color flex justify-center items-center">
                   <category.icon />
                 </div>
                 <h1 className=" font-bold   text-primary_color text-center">

@@ -43,7 +43,7 @@ const Faq = () => {
   ];
 
   return (
-    <div>
+    <div className="py-20">
       <div className="">
         <h1 className=" md:text-4xl text-2xl font-semibold text-center">
           Frequently Asked Questions (FAQ)

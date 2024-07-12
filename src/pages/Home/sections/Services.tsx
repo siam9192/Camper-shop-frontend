@@ -41,12 +41,12 @@ const services = [
   
 const Services = () => {
   return (
-    <div className='py-10'>
+    <div className='py-20'>
         <div className=" space-y-2">
-        <h1 className=" md:text-4xl text-2xl font-semibold text-center">
+        <h1 className="  text-3xl font-semibold text-center">
           Our Services
         </h1>
-     <div className=' py-5 grid grid-cols-3 gap-5 '>
+     <div className=' py-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 '>
      {
         services.map((service,index)=>{
             return <div key={index}>

@@ -10,8 +10,10 @@ type TProductCardProps = {
 const ProductCard = ({ product }: TProductCardProps) => {
   return (
     <Link to={`/products/${product._id}`}>
-      <div className="p-5 bg-white rounded">
-        <img src={product.images[0] || "/images/bag1.jpg"} className="w-full" alt="" />
+      <div className="p-5 flex flex-col h-full bg-white rounded hover:border-2 hover:border-gray-800">
+    <div className='flex-wrap'>
+    <img src={product.images[0]} className="w-full h-72 " alt="" />
+    </div>
 
         <div className="py-5 space-y-2">
           <div className=" flex justify-between items-center">

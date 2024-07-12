@@ -8,14 +8,7 @@ const Checkout = () => {
       <div className='lg:flex'>
       <div   className='lg:w-[60%]'>
        <div   className='py-10'>
-            {/* <div   className='grid grid-cols-2 gap-5 p-2 bg-gray-100 '>
-                <div>
-                    <img src="/images/cod.png" alt=""   className='w-20 h-20'/>
-                </div>
-                <div>
-                    <img src="/images/cod.png" alt=""   className='w-full h-full' />
-                </div>
-            </div> */}
+           
          <div className='space-y-2'>
          <h2   className=' text-black font-semibold'>Payment Method:</h2>
             <div  className="grid sm:grid-cols-2 gap-2">

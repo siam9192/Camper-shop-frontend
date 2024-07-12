@@ -32,7 +32,7 @@ const Team = () => {
        <h1 className=" text-3xl font-semibold text-black">Our Team Members</h1>
        <p>We think our story isstarworth sharing with you</p>
        </div>
-       <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+       <div className="py-10 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {
             members.map((member,index)=>{
                 return <div className="space-y-2" key={index}>
@@ -40,7 +40,7 @@ const Team = () => {
                     <img src={member.photo} alt="" />
                 </div>
                 <div className=" space-y-1 text-center">
-                    <h1 className=" text-2xl text-black font-jakarta font-extrabold">{member.name}</h1>
+                    <h1 className=" text-xl md:text-2xl text-black font-jakarta font-extrabold">{member.name}</h1>
                     <h2 className=" text-xs text-black font-jakarta font-extrabold">{member.position}</h2>
                 </div>
                 </div>

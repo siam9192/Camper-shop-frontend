@@ -6,7 +6,7 @@ import { AiOutlineStock } from 'react-icons/ai';
 import { LuPencilLine } from 'react-icons/lu';
 import { useAppDispatch, useAppSelector } from '../../../redux/hook';
 import { addToCart } from '../../../redux/features/cart/cartSlice';
-import { toastSuccess } from '../../../utils/constant';
+import { toastError, toastSuccess } from '../../../utils/constant';
 
 
 type TProductDetailsProps = {
@@ -29,7 +29,7 @@ const ProductDetails = ({ product }: TProductDetailsProps) => {
     };
     const findItem = cartItems.find((item) => item.id === cartData.id);
     if (findItem) {
-      toastSuccess("Item already on your cart")
+      toastError("Item already on your cart")
       return;
     }
     dispatch(addToCart(cartData));

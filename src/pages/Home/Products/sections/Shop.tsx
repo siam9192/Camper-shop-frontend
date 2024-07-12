@@ -48,15 +48,32 @@ const Shop = () => {
       </div>
     );
   }
+
+  const handleSort = (e:any)=>{
+    const query = queryString.parse(searchParams);
+    const newSearchQuery:any = { ...query, currentPage: 1 }
+    if(e.target.value === "p-h-l"){
+    newSearchQuery.sort="-1"
+    }
+    else{
+     delete  newSearchQuery.sort
+    }
+    const searchQuery = queryString.stringify(newSearchQuery);
+  
+
+    navigate(`?${searchQuery}`);
+    refetch();
+  }
   return (
     <div className="lg:w-[80%] ">
       <div className=" flex justify-between items-center">
         <div>
           <h2 className=" text-black font-bold uppercase md:block hidden">
-            Showing {pages.length*(currentPage-1)+1}-{pages.length*(currentPage-1)+products.length} of {totalProduct} results
+            Showing {pages.length*(currentPage-1)}-{pages.length*(currentPage-1)+products.length} of {totalProduct} results
           </h2>
         </div>
         <select
+         onChange={handleSort}
           name=""
           id=""
           className=" bg-transparent p-2 uppercase text-black font-bold"
@@ -64,7 +81,7 @@ const Shop = () => {
           <option value="" defaultChecked>
             Default Sorting
           </option>
-          <option value="">Price(Low-High)</option>
+          <option value="p-h-l">Price(Low-High)</option>
         </select>
       </div>
 
@@ -78,12 +95,13 @@ const Shop = () => {
             ))}
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="pt-10 flex flex-grow justify-center items-center gap-2">
         {pages.map((page, index) => {
           return (
             <div
               onClick={() => changePage(page)}
-              className={`px-4 py-2 border border-primary_color text-center text-black  hover:bg-primary_color hover:text-white hover:cursor-pointer ${currentPage === page ? 'bg-info_color' : ''}`}
+              className={` px-3 py-1 md:px-4 md:py-2 border border-primary_color text-center text-black  hover:bg-primary_color hover:text-white hover:cursor-pointer ${currentPage === page ? 'bg-info_color' : ''}`}
+              key={index}
             >
               {page}
             </div>

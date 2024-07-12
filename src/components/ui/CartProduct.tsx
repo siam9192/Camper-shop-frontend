@@ -3,12 +3,14 @@ import { useAppDispatch } from '../../redux/hook';
 import { TCartProduct } from '../../types';
 import { useState } from 'react';
 import { RxCross2 } from 'react-icons/rx';
+import ConfirmPopup from './ConfirmPopup';
 
 type TCartProductProps = {
   product: TCartProduct;
+  setIsStockOut:()=>void
 };
 
-const CartProduct = ({ product }: TCartProductProps) => {
+const CartProduct = ({ product,setIsStockOut }: TCartProductProps) => {
   const [quantity, setQuantity] = useState(product.quantity);
   const dispatch = useAppDispatch();
   const increment = () => {
@@ -78,7 +80,8 @@ const CartProduct = ({ product }: TCartProductProps) => {
 
       {/* Delete */}
       <div>
-        <span onClick={handleRemoveProduct} className="inline-flex justify-center items-center size-[25px] md:size-[46px] rounded-full bg-gray-50 text-gray-800 dark:bg-neutral-700 dark:text-neutral-400">
+      <ConfirmPopup id={product._id} clickFn={handleRemoveProduct} >
+      <span className="inline-flex justify-center items-center size-[25px] md:size-[46px] rounded-full bg-gray-50 text-gray-800 dark:bg-neutral-700 dark:text-neutral-400">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -94,6 +97,8 @@ const CartProduct = ({ product }: TCartProductProps) => {
             />
           </svg>
         </span>
+          </ConfirmPopup>
+      
       </div>
     </div>
   );

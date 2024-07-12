@@ -7,9 +7,7 @@ import { BsCart2 } from 'react-icons/bs';
 import IconButton from '../ui/IconButton';
 import { HiMenuAlt3 } from 'react-icons/hi';
 import { useAppDispatch, useAppSelector } from '../../redux/hook';
-import toggleSlice, {
-  toggleSidebar,
-} from '../../redux/features/toggle/toggleSlice';
+
 import Sidebar from '../ui/Sidebar';
 type TNavigaion = {
   name: string;
@@ -39,12 +37,10 @@ const Header = () => {
     },
   ];
 
-  const openSidebar = () => {
-    dispatch(toggleSidebar());
-  };
+  
 
   return (
-    <div className="md:py-10  py-5">
+    <div className="md:py-6  py-5 border-b">
       <WidthLayout>
         <div className="flex justify-between items-center">
           <div className=" flex gap-3 items-center">

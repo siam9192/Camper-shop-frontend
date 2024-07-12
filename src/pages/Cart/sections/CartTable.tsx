@@ -3,9 +3,10 @@ import CartProduct from '../../../components/ui/CartProduct';
 
 type TCartTableProps = {
   products: TCartProduct[];
+  setIsStockOut:()=>void
 };
 
-const CartTable = ({ products }: TCartTableProps) => {
+const CartTable = ({ products,setIsStockOut }: TCartTableProps) => {
   
   return (
     <div className=" w-full">
@@ -16,7 +17,7 @@ const CartTable = ({ products }: TCartTableProps) => {
               <table className="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
                 <tbody className="divide-y divide-gray-200 dark:divide-neutral-700">
                   {products.map((product, index) => {
-                    return <CartProduct product={product} key={index} />;
+                    return <CartProduct setIsStockOut={setIsStockOut} product={product} key={index} />;
                   })}
                 </tbody>
               </table>

@@ -25,11 +25,9 @@ const Cart = () => {
   const shipping = 10
   const total = subtotal + taxes + shipping
 
-  // const isProductStockOut = ()=>{
-  //   products.forEach((product:TProduct)=>{
-  //     if(product.qu)
-  //   })
-  // }
+  const handleProductStockOut = (value:boolean)=>{
+    setIsProductStockOut(value)
+  }
   return (
     <div className="py-10">
       <div className=" flex justify-between items-center">
@@ -38,7 +36,7 @@ const Cart = () => {
       </div>
      <div className=' pt-5 md:pt-10 lg:flex gap-5'>
      <div className="lg:w-[70%]">
-        <CartTable products={products} />
+        <CartTable setIsStockOut = {handleProductStockOut} products={products}  />
       </div>
       <div className="lg:w-[30%]">
                 <div className="bg-gray-100 rounded-lg p-5">

@@ -1,21 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit/react';
 
 type TInitialState = {
-  isSidebarOpen: boolean;
+  isProductCreateFormOpen: boolean;
 };
 const initialState: TInitialState = {
-  isSidebarOpen: false,
+  isProductCreateFormOpen: false,
 };
 const toggleSlice = createSlice({
   name: 'toggle',
   initialState,
   reducers: {
-    toggleSidebar: (state) => {
-      state.isSidebarOpen = !state.isSidebarOpen;
+    
+    toggleProductCreateForm: (state,action) => {
+      state.isProductCreateFormOpen = action.payload
     },
   },
 });
 
-export const { toggleSidebar } = toggleSlice.actions;
+export const {toggleProductCreateForm } = toggleSlice.actions;
 
 export default toggleSlice.reducer;

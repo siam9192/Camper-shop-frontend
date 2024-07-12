@@ -35,8 +35,8 @@ const Spinner = ()=> <div className="animate-spin inline-block size-6 border-[3p
 
     Promise.all(orders.map((order)=>postOrder(order)))
     .then(values=>{
-     dispatch(removeAllCartItems)
-    
+     dispatch(removeAllCartItems())
+     navigate("/my-cart/checkout/success")
     })
    
   }

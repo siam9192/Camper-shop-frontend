@@ -14,7 +14,7 @@ const FeaturedProducts = () => {
   const products = data?.data || [];
 
   return (
-    <div className=" md:py-10 py-5">
+    <div className="py-20 py-5">
       <div className=" space-y-2">
         <h1 className=" md:text-4xl text-2xl font-semibold text-center">
           Featured Products
@@ -24,7 +24,7 @@ const FeaturedProducts = () => {
           Adventures
         </p>
       </div>
-      <div className="py-5 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 md:gap-5 gap-3 font-jakarta">
+      <div className="py-10 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 md:gap-5 gap-3 font-jakarta">
         {isLoading
           ? loadingItems.map((item: any, index: number) => (
               <ProductLoadingCard />

@@ -4,7 +4,8 @@ import FeaturedProducts from './sections/FeaturedProducts';
 import Hero from './sections/Hero';
 import RecommendedProducts from './sections/RecommendedProducts';
 import Services from './sections/Services';
-
+import "./home.css"
+import Testimonial from './sections/Testimonial';
 const Home = () => {
   return (
     <div>

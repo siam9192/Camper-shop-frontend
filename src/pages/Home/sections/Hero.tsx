@@ -7,7 +7,7 @@ const Hero = () => {
       <div className=" space-y-10">
         <div className="space-y-3">
           <h1 className=" md:text-5xl text-3xl font-bold text-gray-900">
-            Welcome to Capmers Shop - Your Ultimate Destination for Outdoor
+            Welcome to Capmers Shop - <span className=' text-secondary_color'>Your Ultimate Destination</span> for Outdoor
             Adventures
           </h1>
           <p>Discover Premium Camping Gear, Apparel, and Essentials</p>
