@@ -1,6 +1,6 @@
 import React from 'react';
 import ConfirmPopup from './ConfirmPopup';
-import { useDeleteProductMutation } from '../../redux/features/Products/products.api';
+import { useDeleteProductMutation } from '../../redux/features/Products/Products.api';
 import { openModal, toastError, toastSuccess } from '../../utils/constant';
 import { TProduct } from '../../types';
 import { useAppDispatch } from '../../redux/hook';

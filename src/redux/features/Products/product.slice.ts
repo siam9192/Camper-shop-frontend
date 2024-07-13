@@ -1,5 +1,6 @@
 import { TProduct } from '@/types';
 import { createSlice } from '@reduxjs/toolkit/react';
+// clg hello word
 
 type TInitialState = {
   updatableProduct: TProduct | null;

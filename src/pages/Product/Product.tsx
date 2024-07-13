@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useGetProductQuery } from '../../redux/features/Products/products.api';
+import { useGetProductQuery } from '../../redux/features/Products/Products.api';
 import ImageGallery from './sections/ImageGallery';
 import ProductDetails from './sections/ProductDetails';
 import { useEffect } from 'react';

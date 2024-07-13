@@ -1,5 +1,5 @@
 import { TProduct } from '../../types/index';
-import { useGetProductsQuery } from '../../redux/features/Products/products.api';
+import { useGetProductsQuery } from '../../redux/features/Products/Products.api';
 import React, { useEffect, useState } from 'react';
 import UpdateProductForm from './sections/UpdateProductForm';
 import Pagination from '../../components/ui/Pagination';

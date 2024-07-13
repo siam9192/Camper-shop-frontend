@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import ProductCard from '../../../../components/ui/ProductCard';
 import ProductLoadingCard from '../../../../components/ui/ProductLoadingCard';
 
-import { useGetProductsQuery } from '../../../../redux/features/Products/products.api';
+import { useGetProductsQuery } from '../../../../redux/features/Products/Products.api';
 import { useNavigate } from 'react-router-dom';
 import queryString from 'query-string';
 import { loadingItems, generatePages } from '../../../../utils/constant';

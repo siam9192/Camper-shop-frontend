@@ -4,7 +4,7 @@ import ProductCard from '../../../components/ui/ProductCard';
 import {
   useGetProductsQuery,
   useGetRecommendedProductsQuery,
-} from '../../../redux/features/Products/products.api';
+} from '../../../redux/features/Products/Products.api';
 import { TProduct } from '../../../types';
 import { loadingItems } from '../../../utils/constant';
 import ProductLoadingCard from '../../../components/ui/ProductLoadingCard';

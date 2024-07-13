@@ -1,4 +1,5 @@
 import { baseApi } from '../../api/baseApi';
+// clg hello word
 
 const productApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -53,6 +54,7 @@ const productApi = baseApi.injectEndpoints({
     }),
   }),
 });
+
 
 export const {
   useGetProductsQuery,

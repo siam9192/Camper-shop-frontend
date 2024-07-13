@@ -10,7 +10,7 @@ import React, { FormEvent, useEffect, useRef, useState } from 'react';
 import {
   usePostProductMutation,
   useUpdateProductMutation,
-} from '../../../redux/features/Products/products.api';
+} from '../../../redux/features/Products/Products.api';
 import { TProduct } from '../../../types';
 import WidthLayout from '../../../components/layout/WidthLayout';
 import { useAppSelector } from '../../../redux/hook';

@@ -6,7 +6,7 @@ import {
   toastSuccess,
 } from '../../../utils/constant';
 import React, { FormEvent, useEffect, useRef, useState } from 'react';
-import { usePostProductMutation } from '../../../redux/features/Products/products.api';
+import { usePostProductMutation } from '../../../redux/features/Products/Products.api';
 import { useAppDispatch, useAppSelector } from '../../../redux/hook';
 import { toggleProductCreateForm } from '../../../redux/features/toggle/toggleSlice';
 import WidthLayout from '../../../components/layout/WidthLayout';
