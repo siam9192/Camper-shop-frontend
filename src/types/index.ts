@@ -25,5 +25,5 @@ export type TCartProduct = {
   category: string;
   price: number;
   quantity: number;
-  stock: string;
+  stock: number;
 };

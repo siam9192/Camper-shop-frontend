@@ -27,7 +27,7 @@ const Team = () => {
         bio: "Mark is dedicated to building a vibrant community at Campers Show. With a background in social media and customer relations, he fosters connections among outdoor enthusiasts and ensures everyone feels welcome."
       }]
   return (
-    <div className="py-10">
+    <div className="py-20">
        <div className=" space-y-2 text-center">
        <h1 className=" text-3xl font-semibold text-black">Our Team Members</h1>
        <p>We think our story isstarworth sharing with you</p>

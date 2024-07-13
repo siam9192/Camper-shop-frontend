@@ -20,10 +20,7 @@ product:TProduct
 
 const UpdateProductForm = () => {
  
-  const {
-    register,
-    handleSubmit,
-  } = useForm<TFormInputs>()
+  
 
  const [imagesUrl,setImagesUrl] = useState<string[]>([])
  const [fileImages,setFileImages] = useState<any[]>([])
@@ -35,6 +32,34 @@ const UpdateProductForm = () => {
  const [updateData] = useUpdateProductMutation()
  const product = useAppSelector(state=>state.product.updatableProduct)
  
+ const useFormParameter:any = {
+
+ }
+ if(product){
+  const values = {
+    name:product.name,
+    description:product.description,
+    category:product.category,
+    price:product.price,
+    stock:product.stock,
+    rating:product.rating
+  }
+  
+  useFormParameter.defaultValues = {
+    name:product.name,
+    description:product.description,
+    category:product.category,
+    price:product.price,
+    stock:product.stock,
+    rating:product.rating
+  }
+  useFormParameter.values = values
+ }
+ 
+ const {
+  register,
+  handleSubmit,
+} = useForm<TFormInputs>(useFormParameter)
  useEffect(()=>{
 
   if(product?.images.length){
@@ -50,7 +75,8 @@ const UpdateProductForm = () => {
   data.price = parseInt(data.price)
   data.stock = parseInt(data.stock)
   data.rating = parseInt(data.rating)
-  
+  console.log(data)
+  return
   setLoading(true)
  if(fileImages.length){
   const responses = await Promise.all(fileImages.map((image:any)=>{
@@ -135,21 +161,21 @@ setFileImages([...fileImages,...array])
            </svg>
          </button>
        </div>
-       <div  className="p-4 overflow-y-auto">
+       <div  className="p-4 overflow-y-auto no-scrollbar::-webkit-scrollbar">
      <WidthLayout>
      <div
         
         >
            <div>
            <h1   className=" text-2xl  md:text-3xl text-black font-extrabold  p-5 ">Update Product</h1>
-           <form onSubmit={handleSubmit(submit)}  className='  p-5 space-y-4 overflow-y-auto '>
+           <form onSubmit={handleSubmit(submit)}  className='  p-5 space-y-4 no-scrollbar no-scrollbar::-webkit-scrollbar overflow-y-auto '>
               <div   className='grid grid-cols-1  md:grid-cols-2 gap-5'>
                   <div   className=' space-y-1'>
                  <label htmlFor="name"   className='text-black font-semibold'>Product Name:</label>
-                 <input {...register("name")} value={product?.name} type="text" id='name'   className="py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm text-black focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Product name"/>
+                 <input {...register("name")}  type="text" id='name'   className="py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm text-black focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Product name"/>
                   </div>
                   <div   className=' space-y-1'>
-                 <label htmlFor="category" defaultValue={product?.category}  className='text-black font-semibold'>Product Category:</label>
+                 <label htmlFor="category"  className='text-black font-semibold'>Product Category:</label>
                  <select  {...register("category")} id='category'   className="py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm text-black uppercase font-bold focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
                   {
                       productCategories.map((category,index)=><option value={category} key={index}>{category}</option>)
@@ -158,21 +184,21 @@ setFileImages([...fileImages,...array])
                   </div>
                   <div   className=' md:col-span-2 space-y-1'>
                   <label htmlFor="description"   className='text-black font-semibold'>Product Description:</label>
-                  <textarea  {...register("description")} name="description" id="description" defaultValue={product?.description}   className='w-full p-2 rounded-lg min-h-72 border bg-gray-100' placeholder='Write something about product'></textarea>
+                  <textarea  {...register("description")} name="description" id="description"   className='w-full p-2 rounded-lg min-h-72 border bg-gray-100' placeholder='Write something about product'></textarea>
               </div>
               </div>
               <div   className='grid grid-cols-2  md:grid-cols-4 gap-5'>
               <div   className=' space-y-1'>
                  <label htmlFor="price"   className='text-black font-semibold'>Product Price:</label>
-                 <input  {...register("price")} type="number" id='price' defaultValue={product?.price}   className="py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm text-black focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Enter product price"/>
+                 <input  {...register("price")} type="number" step="0.01" id='price'    className="py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm text-black focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Enter product price"/>
                   </div>
                   <div   className=' space-y-1'>
                  <label htmlFor="stock"   className='text-black font-semibold'>Available Stock:</label>
-                 <input  {...register("stock")} type="number" id='stock' defaultValue={product?.stock}  className="py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm text-black focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Enter available stock"/>
+                 <input  {...register("stock")} type="number" id='stock'   className="py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm text-black focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Enter available stock"/>
                   </div>
                   <div   className=' space-y-1'>
                  <label htmlFor="rating"   className='text-black font-semibold'>Product Ratting:</label>
-                 <input  {...register("rating")} type="number" id='rating' defaultValue={product?.rating}   className="py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm text-black focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Enter Product ratting"/>
+                 <input  {...register("rating")} type="number" id='rating'  className="py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm text-black focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Enter Product ratting"/>
                   </div>
                   <div   className=' space-y-1'>
                  
@@ -204,7 +230,7 @@ setFileImages([...fileImages,...array])
                type='submit'   className=' px-6 py-2 bg-secondary_color text-white uppercase'>{loading ? "Saving...." : "Save Changes"}</button></div>
             
            </form>
-          
+         
           </div>
         </div>
      </WidthLayout>

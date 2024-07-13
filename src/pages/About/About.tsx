@@ -7,7 +7,7 @@ import Social from './Social';
 
 const About = () => {
   return (
-    <div className="py-10 min-h-[80vh]">
+    <div className=" min-h-[80vh]">
  
     <Hero/>
     <Mission/>

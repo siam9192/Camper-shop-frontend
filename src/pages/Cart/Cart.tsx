@@ -4,6 +4,8 @@ import { useAppSelector } from '../../redux/hook';
 import CartTable from './sections/CartTable';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import CartSummery from './sections/CartSummery';
+import EmptyCart from './sections/EmptyCart';
 
 const Cart = () => {
   const cartItems = useAppSelector((state) => state.cart.cartItems);
@@ -20,14 +22,11 @@ const Cart = () => {
         };
       }
     }).filter( (item:any) => item !== undefined) || [];
-  const subtotal = products.reduce((prev:number,current:TCartProduct)=>prev + current.price,0) 
-  const taxes = subtotal*0.05
-  const shipping = 10
-  const total = subtotal + taxes + shipping
 
   const handleProductStockOut = (value:boolean)=>{
     setIsProductStockOut(value)
   }
+  
   return (
     <div className="py-10">
       <div className=" flex justify-between items-center">
@@ -36,31 +35,15 @@ const Cart = () => {
       </div>
      <div className=' pt-5 md:pt-10 lg:flex gap-5'>
      <div className="lg:w-[70%]">
-        <CartTable setIsStockOut = {handleProductStockOut} products={products}  />
+        {
+          cartItems.length ? <CartTable products={products}  />
+          :
+          <EmptyCart/>
+        }
       </div>
-      <div className="lg:w-[30%]">
-                <div className="bg-gray-100 rounded-lg p-5">
-                    <h2 className="text-lg font-semibold mb-4">Summary</h2>
-                    <div className="flex justify-between mb-2">
-                        <span>Subtotal</span>
-                        <span>${subtotal}</span>
-                    </div>
-                    <div className="flex justify-between mb-2">
-                        <span>Taxes</span>
-                        <span>${taxes}</span>
-                    </div>
-                    <div className="flex justify-between mb-2">
-                        <span>Shipping</span>
-                        <span>${shipping}</span>
-                    </div>
-                    <hr className="my-2"/>
-                    <div className="flex justify-between mb-2">
-                        <span className="font-semibold">Total</span>
-                        <span className="font-semibold">${total}</span>
-                    </div>
-                    <Link to={"/my-cart/checkout"}><button className="bg-button_color text-white py-2 px-4 rounded-lg mt-4 w-full">Checkout</button></Link>
-                </div>
-            </div>
+     <div className='lg:w-[30%]'>
+      <CartSummery products = {products}/>
+     </div>
      </div>
         </div>
     

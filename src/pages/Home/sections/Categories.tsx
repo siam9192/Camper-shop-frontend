@@ -39,8 +39,7 @@ const Categories = () => {
           Popular Categories{' '}
         </h1>
         <p className=" text-center text-gray-800 font-medium">
-          Recommended For You: Personalized Gear Picks for Your Outdoor
-          Adventures
+        Popular Categories: Shop from our popular categories
         </p>
       </div>
       <div className="py-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 md:gap-5 gap-3 font-jakarta">

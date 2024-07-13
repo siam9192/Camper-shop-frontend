@@ -1,18 +1,25 @@
-import { removeCartItem } from '../../redux/features/cart/cartSlice';
+import { removeCartItem, updateCartQuantity } from '../../redux/features/cart/cartSlice';
 import { useAppDispatch } from '../../redux/hook';
 import { TCartProduct } from '../../types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { RxCross2 } from 'react-icons/rx';
 import ConfirmPopup from './ConfirmPopup';
 
 type TCartProductProps = {
   product: TCartProduct;
-  setIsStockOut:()=>void
+
 };
 
-const CartProduct = ({ product,setIsStockOut }: TCartProductProps) => {
+const CartProduct = ({ product }: TCartProductProps) => {
   const [quantity, setQuantity] = useState(product.quantity);
+
   const dispatch = useAppDispatch();
+
+
+  useEffect(()=>{
+    dispatch(updateCartQuantity({id:product._id,quantity}))
+  },[quantity])
+
   const increment = () => {
     const value = quantity + 1;
 
@@ -30,7 +37,8 @@ const CartProduct = ({ product,setIsStockOut }: TCartProductProps) => {
      dispatch(removeCartItem(product._id))
   };
   return (
-    <div className="flex items-center justify-between border-b py-5">
+  <div className='border-b py-5'>
+      <div className="flex items-center justify-between ">
       <div>
         <img
           src={product.images[0]}
@@ -101,6 +109,10 @@ const CartProduct = ({ product,setIsStockOut }: TCartProductProps) => {
       
       </div>
     </div>
+   {
+    product.quantity > product.stock &&  <p className='py-2 font-medium text-red-500'>{product.quantity} quantity is not available on stock</p>
+   }
+  </div>
   );
 };
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProductCard from '../../../../components/ui/ProductCard';
 import ProductLoadingCard from '../../../../components/ui/ProductLoadingCard';
 
@@ -13,7 +13,11 @@ const Shop = () => {
   const searchParams = window.location.search;
 
   const { data, isLoading, refetch } = useGetProductsQuery(searchParams);
-  const [currentPage, setCurrentPage] = useState(1);
+  
+  // const currentPageFromUrl = parseInt()
+  const parsedQuery = queryString.parse(searchParams)
+
+  const [currentPage, setCurrentPage] = useState(parseInt((parsedQuery.currentPage||"1")as string));
   const navigate = useNavigate();
   const products = data?.data.products || [];
   const totalProduct = data?.data?.totalProduct || 0;
@@ -31,6 +35,7 @@ const Shop = () => {
     },
   ];
 
+
   const changePage = (page: number) => {
     setCurrentPage(page);
     const query = queryString.parse(searchParams);
@@ -41,7 +46,7 @@ const Shop = () => {
   };
   if (!isLoading && !products.length) {
     return (
-      <div className="lg:w-[80%]  min-h-[70vh]">
+      <div className="lg:w-[70%]  min-h-[70vh]">
         <h1 className=" text-4xl text-black text-center font-semibold my-20">
           No Product Found
         </h1>

@@ -8,8 +8,9 @@ const cartApi = baseApi.injectEndpoints({
         method: 'POST',
         body: payload,
       }),
-    }),
+    })
   }),
+ 
 });
 
 export const { useGetCartProductsQuery } = cartApi;

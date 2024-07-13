@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 
 import MainLayout from './components/layout/MainLayout';
 import 'preline/preline';
 import { IStaticMethods } from 'preline/preline';
 import { useLocation } from 'react-router-dom';
+import { useAppSelector } from './redux/hook';
 declare global {
   interface Window {
     HSStaticMethods: IStaticMethods;
@@ -13,31 +12,35 @@ declare global {
 }
 
 
+
 function App() {
  
   const {pathname} = useLocation();
-
+  const cartItems = useAppSelector(state=>state.cart.cartItems)
+  
   useEffect(() => {
     window.HSStaticMethods.autoInit();
   }, [pathname]);
+  useEffect(() => {
+    const handleBeforeUnload = (event:any) => {
+      event.preventDefault();
    
-  // useEffect(() => {
-  //   const handleLoad = () => {
-  //   const confirmation =  confirm("On Page reload you may lose your browser")
-  //   if(confirmation){
-  //     // window.location.href = pathname
-      
-  //   }
-  //   else{
-      
-  //   }
-  //   };
-  //   window.addEventListener('load', handleLoad);
-  //   return () => {
-  //     window.removeEventListener('load', handleLoad);
-  //   };
-  // }, []);
-
+      // // Modern browsers require setting returnValue for the event
+      if(cartItems.length){
+        event.returnValue = 'Are you sure you want to leave?';
+      }
+    };
+  
+   
+    window.addEventListener('beforeunload', handleBeforeUnload);
+   
+  
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
+   
   return <MainLayout />;
 }
 

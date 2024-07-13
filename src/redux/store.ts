@@ -23,7 +23,7 @@ export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
     toggle: toggleSlice,
-    cart: persistCartReducer,
+    cart: cartReducer,
     product:productSlice
   },
   middleware: (getDefaultMiddlewares) =>

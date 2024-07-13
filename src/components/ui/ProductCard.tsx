@@ -12,7 +12,7 @@ const ProductCard = ({ product }: TProductCardProps) => {
     <Link to={`/products/${product._id}`}>
       <div className="p-5 flex flex-col h-full bg-white rounded hover:border-2 hover:border-gray-800">
     <div className='flex-wrap'>
-    <img src={product.images[0]} className="w-full h-72 " alt="" />
+    <img src={product.images[0]} className="w-full lg:h-60 " alt="" />
     </div>
 
         <div className="py-5 space-y-2">

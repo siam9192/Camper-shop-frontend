@@ -20,8 +20,8 @@ const FeaturedProducts = () => {
           Featured Products
         </h1>
         <p className=" text-center text-gray-800 font-medium">
-          Recommended For You: Personalized Gear Picks for Your Outdoor
-          Adventures
+          Featured products: Personalized Gear Picks for Your Outdoor
+          Adventures from this section
         </p>
       </div>
       <div className="py-10 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 md:gap-5 gap-3 font-jakarta">

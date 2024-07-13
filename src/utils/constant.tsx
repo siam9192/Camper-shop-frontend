@@ -104,7 +104,9 @@ export const openPopUp = (clickFn:()=>void)=>{
   
    titleText:"Are You sure",
     showCancelButton: true,
+    icon:"question",
     text:"You want to delete it ",
+    color:"black",
     confirmButtonText: "Delete",
     confirmButtonColor:"black"
   }).then((result) => {
@@ -120,7 +122,7 @@ export const openPopUp = (clickFn:()=>void)=>{
 
  export const openModal = (id:string)=>{
   const modal = document.querySelector(`#${id}`) as HTMLElement;
-  modal.setAttribute("class","hs-overlay-backdrop transition duration fixed inset-0 bg-gray-900 bg-opacity-50 dark:bg-opacity-80 dark:bg-neutral-900 open")
+  modal.setAttribute("class","hs-overlay-backdrop transition duration fixed inset-0 bg-gray-900 bg-opacity-50 dark:bg-opacity-80 dark:bg-neutral-900 z-50 open")
 
   // HSOverlay.open(modal)
   // HSOverlay.close(modal)
