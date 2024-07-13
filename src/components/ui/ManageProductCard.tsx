@@ -30,7 +30,7 @@ const ManageProductCard = ({ product }: { product: TProduct }) => {
 
   return (
     <tr>
-      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+      <td className="px-6 py-4 whitespace-nowrap md:gap-0 text-sm font-medium text-gray-800 dark:text-neutral-200">
         <div className="flex gap-2">
           <img
             src={product.images[0]}
@@ -45,7 +45,22 @@ const ManageProductCard = ({ product }: { product: TProduct }) => {
               onClick={handleNavigate}
               className=" text-[12px] md:text-[18px] font-bold uppercase hover:cursor-pointer hover:text-info_color"
             >
-              {product.name}
+         <span className=' hidden md:block'>
+         {
+            product.name.length > 30 ?
+            `${product.name.slice(0,30)}...`
+            :
+            product.name
+           }
+         </span>
+         <span className=' md:hidden block'>
+         {
+            product.name.length > 8 ?
+            `${product.name.slice(0,8)}..`
+            :
+            product.name
+           }
+         </span>
             </h3>
           </div>
         </div>

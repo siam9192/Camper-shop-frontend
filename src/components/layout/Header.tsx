@@ -48,7 +48,7 @@ const Header = () => {
               className="w-10 h-10 md:w-14 md:h-14 rounded-full"
             />
             <h1 className=" md:text-2xl text-xl font-medium">
-              <span className=" md:text-3xl text-2xl font-semibold text-primary_color">
+              <span className=" md:text-3xl text-xl font-semibold text-primary_color">
                 Camp
               </span>{' '}
               Shop

@@ -5,7 +5,7 @@ import {
   toastError,
   toastSuccess,
 } from '../../../utils/constant';
-import React, { FormEvent, useRef, useState } from 'react';
+import React, { FormEvent, useEffect, useRef, useState } from 'react';
 import { usePostProductMutation } from '../../../redux/features/Products/products.api';
 import { useAppDispatch, useAppSelector } from '../../../redux/hook';
 import { toggleProductCreateForm } from '../../../redux/features/toggle/toggleSlice';
@@ -26,14 +26,21 @@ const ProductCreateForm = () => {
   const isProductCreateFormOpen = useAppSelector(
     (state) => state.toggle.isProductCreateFormOpen,
   );
-  const { register, handleSubmit } = useForm<TFormInputs>();
-
+  const { register, handleSubmit,reset } = useForm<TFormInputs>();
+  const [isSubmitSuccessful,setSubmitStatus] = useState<boolean>(false)
   const [fileImages, setFileImages] = useState<string[]>([]);
   const [imagesUrl, setImagesUrl] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const imageRef = useRef<HTMLInputElement>(null);
 
+
+
+  useEffect(()=>{
+    reset()
+  },[isSubmitSuccessful])
+
   const [postData, { isError }] = usePostProductMutation();
+
 
   const openFileInput = () => {
     const fileInput = imageRef.current;
@@ -93,8 +100,11 @@ const ProductCreateForm = () => {
       return;
     }
     toastSuccess(res.message);
-
+    
     setLoading(false);
+    setSubmitStatus(!isSubmitSuccessful)
+    setImagesUrl([])
+    setFileImages([])
     //  closeModal("create-product-modal")
   };
 
@@ -313,16 +323,11 @@ const ProductCreateForm = () => {
             <button
               type="button"
               className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
-              data-hs-overlay="#hs-full-screen-modal"
+              data-hs-overlay="#hs-full-screen-modal-1"
             >
               Close
             </button>
-            <button
-              type="button"
-              className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
-            >
-              Save changes
-            </button>
+           
           </div>
         </div>
       </div>

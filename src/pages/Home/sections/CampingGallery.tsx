@@ -39,7 +39,7 @@ const portfolioList = [
   },
   {
     image:
-      'https://www.google.com/url?sa=i&url=https%3A%2F%2Fgoodtimestours.com.au%2Fbespoke-tours%2Fcamping-tours-victoria%2F&psig=AOvVaw2v2VVrpsPM-I4sBA3znhgk&ust=1720953664690000&source=images&cd=vfe&opi=89978449&ved=0CA4QjRxqFwoTCPCElZDqo4cDFQAAAAAdAAAAABAE',
+      'https://www.transitionsabroad.com/listings/travel/articles/images/small-group-travel-volcano-pucon-chile.jpg',
     title: 'Web Portal Dev',
   },
   {
