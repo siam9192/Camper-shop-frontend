@@ -33,20 +33,23 @@ const productCategories: TProductCategory[] = [
 
 const Categories = () => {
   return (
-    <div className=" md:py-10 py-5">
+    <div className=" md:py-20 py-5">
       <div className=" space-y-2">
         <h1 className=" md:text-4xl text-2xl font-semibold text-center">
           Popular Categories{' '}
         </h1>
         <p className=" text-center text-gray-800 font-medium">
-        Popular Categories: Shop from our popular categories
+          Popular Categories: Shop from our popular categories
         </p>
       </div>
-      <div className="py-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 md:gap-5 gap-3 font-jakarta">
+      <div className="py-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 md:gap-5 gap-3 font-jakarta">
         {productCategories.map((category, index) => {
           return (
             <Link to={`/products?category=${category.name}`}>
-              <div className=" flex flex-col h-full bg-info_color space-y-2  p-10" key={index}>
+              <div
+                className=" flex flex-col h-full bg-info_color space-y-2  p-10"
+                key={index}
+              >
                 <div className=" text-3xl md:text-5xl text-primary_color flex justify-center items-center">
                   <category.icon />
                 </div>

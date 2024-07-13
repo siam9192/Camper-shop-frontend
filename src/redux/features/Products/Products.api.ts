@@ -6,31 +6,31 @@ const productApi = baseApi.injectEndpoints({
       query: (payload) => ({
         url: `/products`,
         method: 'POST',
-      body:payload
+        body: payload,
       }),
     }),
-    updateProduct:builder.mutation({
-      query:(payload)=>{
+    updateProduct: builder.mutation({
+      query: (payload) => {
         return {
-          url:`/products/${payload.id}`,
-          method:"PUT",
-          body:payload.data
-        }
+          url: `/products/${payload.id}`,
+          method: 'PUT',
+          body: payload.data,
+        };
       },
-      invalidatesTags:['Get product']
+      invalidatesTags: ['Get product'],
     }),
     getProducts: builder.query({
       query: (query) => ({
         url: `/products${query}`,
         method: 'GET',
       }),
-      providesTags:['Get product']
+      providesTags: ['Get product'],
     }),
     getProduct: builder.query({
       query: (id: string) => ({
         url: `/products/${id}`,
         method: 'GET',
-      })
+      }),
     }),
     getRecommendedProducts: builder.query({
       query: (query) => ({
@@ -49,10 +49,9 @@ const productApi = baseApi.injectEndpoints({
         url: `/products/${id}`,
         method: 'DELETE',
       }),
-      invalidatesTags:['Get product']
+      invalidatesTags: ['Get product'],
     }),
   }),
-  
 });
 
 export const {
@@ -61,5 +60,5 @@ export const {
   useUpdateProductMutation,
   useGetProductQuery,
   useGetRecommendedProductsQuery,
-  useDeleteProductMutation
+  useDeleteProductMutation,
 } = productApi;

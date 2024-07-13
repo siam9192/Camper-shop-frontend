@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const images = ['/images/slider-1.jpg', '/images/slider-2.jpg'];
@@ -7,17 +8,22 @@ const Hero = () => {
       <div className=" space-y-10">
         <div className="space-y-3">
           <h1 className=" md:text-5xl text-3xl font-bold text-gray-900">
-            Welcome to Capmers Shop - <span className=' text-secondary_color'>Your Ultimate Destination</span> for Outdoor
-            Adventures
+            Welcome to Capmers Shop -{' '}
+            <span className=" text-secondary_color">
+              Your Ultimate Destination
+            </span>{' '}
+            for Outdoor Adventures
           </h1>
           <p>Discover Premium Camping Gear, Apparel, and Essentials</p>
         </div>
-        <h2 className=" text-2xl font-medium text-secondary_color">
+        <h2 className="py-2 text-2xl font-medium text-secondary_color">
           Get up to 40% discount on your first order
         </h2>
-        <button className="px-6 py-3 rounded-lg bg-button_color hover:bg-primary_color text-white uppercase">
-          Explore Now
-        </button>
+        <Link to="/products">
+          <button className="px-6 py-3 rounded-lg bg-button_color hover:bg-primary_color text-white uppercase">
+            Explore Now
+          </button>
+        </Link>
       </div>
       <div>
         <img src={images[1]} alt="" />

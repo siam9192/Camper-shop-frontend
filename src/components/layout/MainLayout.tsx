@@ -16,8 +16,8 @@ const MainLayout = () => {
         <Outlet />
       </WidthLayout>
       {!hiddenPaths.includes(pathname) && <Footer />}
-    
-      <ToastContainer/>
+
+      <ToastContainer />
     </div>
   );
 };

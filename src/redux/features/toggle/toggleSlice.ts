@@ -10,13 +10,12 @@ const toggleSlice = createSlice({
   name: 'toggle',
   initialState,
   reducers: {
-    
-    toggleProductCreateForm: (state,action) => {
-      state.isProductCreateFormOpen = action.payload
+    toggleProductCreateForm: (state, action) => {
+      state.isProductCreateFormOpen = action.payload;
     },
   },
 });
 
-export const {toggleProductCreateForm } = toggleSlice.actions;
+export const { toggleProductCreateForm } = toggleSlice.actions;
 
 export default toggleSlice.reducer;

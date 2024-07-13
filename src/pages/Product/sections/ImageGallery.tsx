@@ -7,7 +7,6 @@ type TImageGalleryProps = {
 
 const ImageGallery = ({ images }: TImageGalleryProps) => {
   const [activeImage, setActiveImage] = useState(0);
-  
 
   const handleActiveImage = (index: number) => {
     setActiveImage(index);
@@ -19,7 +18,8 @@ const ImageGallery = ({ images }: TImageGalleryProps) => {
           return (
             <div
               className={`p-1 hover:cursor-pointer ${activeImage === index ? 'border-4 border-info_color' : ' border-2 border-black'}`}
-              onClick={() => handleActiveImage(index)} key={index}
+              onClick={() => handleActiveImage(index)}
+              key={index}
             >
               <img src={image} className="w-full" key={index} alt="" />
             </div>
@@ -27,27 +27,26 @@ const ImageGallery = ({ images }: TImageGalleryProps) => {
         })}
       </div>
       <div className="lg:w-[80%]  ">
-     <div className='w-full lg:block hidden'>
-     <ReactImageMagnify {...{
-    smallImage: {
-        alt: 'Wristwatch by Ted Baker London',
-        isFluidWidth: true,
-        src: images[activeImage],
-        width:140,
-        height:140
-    },
-    largeImage: {
-        src: images[activeImage],
-        width: 836,
-        height: 1100,
-        
-    },
-}} />
-     </div>
-
+        <div className="w-full lg:block hidden">
+          <ReactImageMagnify
+            {...{
+              smallImage: {
+                alt: 'Wristwatch by Ted Baker London',
+                isFluidWidth: true,
+                src: images[activeImage],
+                width: 140,
+                height: 140,
+              },
+              largeImage: {
+                src: images[activeImage],
+                width: 836,
+                height: 1100,
+              },
+            }}
+          />
+        </div>
 
         <img src={images[activeImage]} className="w-full lg:hidden" alt="" />
-        
       </div>
     </div>
   );

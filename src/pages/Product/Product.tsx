@@ -6,11 +6,13 @@ import { useEffect } from 'react';
 
 const Product = () => {
   const { id } = useParams();
-  const { data, isLoading, isError,refetch } = useGetProductQuery(id as string);
+  const { data, isLoading, isError, refetch } = useGetProductQuery(
+    id as string,
+  );
   const product = data?.data;
 
   if (isLoading) {
-    return <div className="min-h-[80vh]">Loading....</div>;
+    return <div className="min-h-[80vh] text-gray-900 py-4">Loading....</div>;
   }
   if (isError) {
     return (
@@ -22,11 +24,10 @@ const Product = () => {
     );
   }
 
-  
   return (
     <div className="min-h-[80vh]">
       <div className="md:py-10 grid grid-cols-1 md:grid-cols-2   gap-10">
-        <ImageGallery images={product.images}/>
+        <ImageGallery images={product.images} />
         <ProductDetails product={product} />
       </div>
     </div>

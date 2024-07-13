@@ -6,7 +6,6 @@ type TCartTableProps = {
 };
 
 const CartTable = ({ products }: TCartTableProps) => {
-  
   return (
     <div className=" w-full">
       <div className="flex flex-col">
@@ -16,7 +15,7 @@ const CartTable = ({ products }: TCartTableProps) => {
               <table className="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
                 <tbody className="divide-y divide-gray-200 dark:divide-neutral-700">
                   {products.map((product, index) => {
-                    return <CartProduct  product={product} key={index} />;
+                    return <CartProduct product={product} key={index} />;
                   })}
                 </tbody>
               </table>

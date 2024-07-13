@@ -12,8 +12,6 @@ const initialState: TInitialState = {
   cartItems: [],
 };
 
-
-
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
@@ -21,26 +19,33 @@ const cartSlice = createSlice({
     addToCart: ({ cartItems }, action) => {
       cartItems.push(action.payload);
     },
-    updateCartQuantity:(state,action)=>{
-   state.cartItems =  state.cartItems.map((cart,index)=>{
-      if(cart.id === action.payload.id){
-        return {
-          id:cart.id,
-          quantity:action.payload.quantity
+    updateCartQuantity: (state, action) => {
+      state.cartItems = state.cartItems.map((cart, index) => {
+        if (cart.id === action.payload.id) {
+          return {
+            id: cart.id,
+            quantity: action.payload.quantity,
+          };
         }
-      }
-      return cart
-     })
+        return cart;
+      });
     },
-    removeCartItem: (state , action) => {
-      state.cartItems = state.cartItems.filter((item) => item.id  !== action.payload);
+    removeCartItem: (state, action) => {
+      state.cartItems = state.cartItems.filter(
+        (item) => item.id !== action.payload,
+      );
     },
     removeAllCartItems: (state) => {
-     state.cartItems = []
-  }
-}
+      state.cartItems = [];
+    },
+  },
 });
 
-export const { addToCart, updateCartQuantity,removeCartItem ,removeAllCartItems} = cartSlice.actions;
+export const {
+  addToCart,
+  updateCartQuantity,
+  removeCartItem,
+  removeAllCartItems,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

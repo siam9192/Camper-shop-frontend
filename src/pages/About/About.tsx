@@ -8,13 +8,12 @@ import Social from './Social';
 const About = () => {
   return (
     <div className=" min-h-[80vh]">
- 
-    <Hero/>
-    <Mission/>
-    <Team/>
-    <Contact/>
-    <MapLocation/>
-    <Social/>
+      <Hero />
+      <Mission />
+      <Team />
+      <Contact />
+      <MapLocation />
+      <Social />
     </div>
   );
 };

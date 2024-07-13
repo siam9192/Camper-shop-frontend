@@ -5,9 +5,11 @@ import InputNumber from '../../../components/ui/InputNumber';
 import { AiOutlineStock } from 'react-icons/ai';
 import { LuPencilLine } from 'react-icons/lu';
 import { useAppDispatch, useAppSelector } from '../../../redux/hook';
-import { addToCart } from '../../../redux/features/cart/cartSlice';
+import {
+  addToCart,
+  updateCartQuantity,
+} from '../../../redux/features/cart/cartSlice';
 import { toastError, toastSuccess } from '../../../utils/constant';
-
 
 type TProductDetailsProps = {
   product: TProduct;
@@ -29,10 +31,12 @@ const ProductDetails = ({ product }: TProductDetailsProps) => {
     };
     const findItem = cartItems.find((item) => item.id === cartData.id);
     if (findItem) {
-      toastError("Item already on your cart")
-      return;
+      cartData.quantity = cartData.quantity + 1;
+      dispatch(updateCartQuantity(cartData));
+    } else {
+      dispatch(addToCart(cartData));
     }
-    dispatch(addToCart(cartData));
+    toastSuccess('Product added  to your cart');
   };
   return (
     <div className=" pb-5 space-y-10 font-jakarta">
@@ -57,7 +61,8 @@ const ProductDetails = ({ product }: TProductDetailsProps) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-1 ">
           <InputNumber quantity={quantity} setQuantity={handleQuantity} />
           <button
-            onClick={handleAddToCart} disabled={product.stock < product.quantity}
+            onClick={handleAddToCart}
+            disabled={product.stock < product.quantity}
             className="w-full  py-4 uppercase font-bold bg-button_color text-white disabled:bg-gray-300"
           >
             Add to cart
@@ -81,10 +86,7 @@ const ProductDetails = ({ product }: TProductDetailsProps) => {
           <span className=" text-xl text-secondary_color ">
             <LuPencilLine />
           </span>
-          <p className="font-semibold text-gray-600">
-            {product.description}
-            
-          </p>
+          <p className="font-semibold text-gray-600">{product.description}</p>
         </div>
       </div>
     </div>

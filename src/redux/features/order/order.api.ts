@@ -1,17 +1,15 @@
-
 import { baseApi } from '../../api/baseApi';
 
 const orderApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     postOrder: builder.mutation({
-      query: (payload:any) => ({
+      query: (payload: any) => ({
         url: `/orders`,
         method: 'POST',
-        body:payload
+        body: payload,
       }),
     }),
   }),
 });
 
-
-export const {usePostOrderMutation} = orderApi
+export const { usePostOrderMutation } = orderApi;

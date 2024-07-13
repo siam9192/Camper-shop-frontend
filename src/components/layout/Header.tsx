@@ -16,7 +16,7 @@ type TNavigaion = {
 const Header = () => {
   const { pathname } = useLocation();
   const dispatch = useAppDispatch();
-  const cartItems = useAppSelector((state) => state.cart.cartItems.length);
+  const cartItems = useAppSelector((state) => state.cart.cartItems);
 
   const navigations: TNavigaion[] = [
     {
@@ -36,8 +36,6 @@ const Header = () => {
       path: '/about',
     },
   ];
-
-  
 
   return (
     <div className="md:py-6  py-5 border-b">
@@ -73,13 +71,13 @@ const Header = () => {
           {/* Icons routes */}
           <div className=" flex items-center md:gap-3 gap-1">
             <IconButton icon={HiMiniMagnifyingGlass}></IconButton>
-            <IconButton icon={LuHeart} value={'5+'}></IconButton>
+            <IconButton icon={LuHeart} value={''}></IconButton>
             <IconButton
               icon={BsCart2}
-              value={cartItems}
+              value={cartItems.length}
               path="/my-cart"
             ></IconButton>
-            <Sidebar/>
+            <Sidebar />
           </div>
         </div>
       </WidthLayout>

@@ -16,7 +16,7 @@ const RecommendedProducts = () => {
 
   return (
     <SectionContainer>
-        <div className="py-10 space-y-2">
+      <div className="py-10 space-y-2">
         <h1 className=" md:text-4xl text-2xl font-semibold text-center">
           Recommended For You
         </h1>

@@ -7,11 +7,15 @@ const Filter = () => {
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(0);
   const [category, setCategory] = useState('');
+  const [text, setText] = useState('');
   const navigate = useNavigate();
 
   const handleFilter = (e: any) => {
     e.preventDefault();
     const filter: any = {};
+    if (text) {
+      filter.q = text;
+    }
     if (minPrice) {
       filter.minPrice = minPrice;
     }
@@ -21,6 +25,7 @@ const Filter = () => {
     if (category) {
       filter.category = category;
     }
+
     const searchParams = queryString.stringify(filter);
     navigate(`?${searchParams}`);
   };
@@ -31,20 +36,33 @@ const Filter = () => {
   return (
     <div className="lg:w-[30%] lg:pt-10 pt-10 bg-gray-50 p-5">
       <form className="space-y-5" onSubmit={handleFilter}>
-      <div className=' flex items-center gap-1'>
-        <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
-</svg>
-</span>
-<h1 className=' text-xl text-black font-bold'>Filter Box</h1>
-      </div>
-      <div>
+        <div className=" flex items-center gap-1">
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75"
+              />
+            </svg>
+          </span>
+          <h1 className=" text-xl text-black font-bold">Filter Box</h1>
+        </div>
+        <div>
           <h2 className="text-black font-bold">Search word</h2>
           <div className="py-2 ">
-
             <input
-              max={1000000}
-              type="number"
+              onChange={(e) => {
+                setText(e.target.value);
+              }}
+              type="text"
               className="w-full p-2  border-2 placeholder:text-black"
             />
           </div>

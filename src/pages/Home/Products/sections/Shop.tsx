@@ -5,19 +5,19 @@ import ProductLoadingCard from '../../../../components/ui/ProductLoadingCard';
 import { useGetProductsQuery } from '../../../../redux/features/Products/products.api';
 import { useNavigate } from 'react-router-dom';
 import queryString from 'query-string';
-import { loadingItems,generatePages } from '../../../../utils/constant';
-
-
+import { loadingItems, generatePages } from '../../../../utils/constant';
 
 const Shop = () => {
   const searchParams = window.location.search;
 
   const { data, isLoading, refetch } = useGetProductsQuery(searchParams);
-  
-  // const currentPageFromUrl = parseInt()
-  const parsedQuery = queryString.parse(searchParams)
 
-  const [currentPage, setCurrentPage] = useState(parseInt((parsedQuery.currentPage||"1")as string));
+  // const currentPageFromUrl = parseInt()
+  const parsedQuery = queryString.parse(searchParams);
+
+  const [currentPage, setCurrentPage] = useState(
+    parseInt((parsedQuery.currentPage || '1') as string),
+  );
   const navigate = useNavigate();
   const products = data?.data.products || [];
   const totalProduct = data?.data?.totalProduct || 0;
@@ -34,7 +34,6 @@ const Shop = () => {
       value: '-1',
     },
   ];
-
 
   const changePage = (page: number) => {
     setCurrentPage(page);
@@ -54,31 +53,31 @@ const Shop = () => {
     );
   }
 
-  const handleSort = (e:any)=>{
+  const handleSort = (e: any) => {
     const query = queryString.parse(searchParams);
-    const newSearchQuery:any = { ...query, currentPage: 1 }
-    if(e.target.value === "p-h-l"){
-    newSearchQuery.sort="-1"
-    }
-    else{
-     delete  newSearchQuery.sort
+    const newSearchQuery: any = { ...query, currentPage: 1 };
+    if (e.target.value === 'p-h-l') {
+      newSearchQuery.sort = '-1';
+    } else {
+      delete newSearchQuery.sort;
     }
     const searchQuery = queryString.stringify(newSearchQuery);
-  
 
     navigate(`?${searchQuery}`);
     refetch();
-  }
+  };
   return (
     <div className="lg:w-[80%] ">
       <div className=" flex justify-between items-center">
         <div>
           <h2 className=" text-black font-bold uppercase md:block hidden">
-            Showing {pages.length*(currentPage-1)}-{pages.length*(currentPage-1)+products.length} of {totalProduct} results
+            Showing {pages.length * (currentPage - 1)}-
+            {pages.length * (currentPage - 1) + products.length} of{' '}
+            {totalProduct} results
           </h2>
         </div>
         <select
-         onChange={handleSort}
+          onChange={handleSort}
           name=""
           id=""
           className=" bg-transparent p-2 uppercase text-black font-bold"

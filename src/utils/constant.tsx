@@ -62,28 +62,30 @@ export const navRoutes: TNavRoute[] = [
   },
 ];
 
-export const toastSuccess = (message:string)=> toast.success(message, {
-  position: "top-right",
-  autoClose: 2000,
-  hideProgressBar: false,
-  closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
-  progress: undefined,
-  theme: "dark",
-  transition: Bounce,
-});
-export const toastError = (message:string)=> toast.error(message, {
-position: "top-right",
-autoClose: 2000,
-hideProgressBar: false,
-closeOnClick: true,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-theme: "dark",
-transition: Bounce,
-});
+export const toastSuccess = (message: string) =>
+  toast.success(message, {
+    position: 'top-right',
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'dark',
+    transition: Bounce,
+  });
+export const toastError = (message: string) =>
+  toast.error(message, {
+    position: 'top-right',
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'dark',
+    transition: Bounce,
+  });
 
 export const generatePages = (totalItem: number, perPage: number) => {
   const pages: number[] = [];
@@ -98,38 +100,41 @@ export const generatePages = (totalItem: number, perPage: number) => {
 
 export const loadingItems = [1, 2, 3, 4, 5, 6, 7, 8];
 
-
-export const openPopUp = (clickFn:()=>void)=>{
+export const openPopUp = (clickFn: () => void) => {
   Swal.fire({
-  
-   titleText:"Are You sure",
+    titleText: 'Are You sure',
     showCancelButton: true,
-    icon:"question",
-    text:"You want to delete it ",
-    color:"black",
-    confirmButtonText: "Delete",
-    confirmButtonColor:"black"
+    icon: 'question',
+    text: 'You want to delete it ',
+    color: 'black',
+    confirmButtonText: 'Delete',
+    confirmButtonColor: 'black',
   }).then((result) => {
     /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
-    clickFn()
+      clickFn();
     } else if (result.isDenied) {
-      Swal.fire("Changes are not saved", "", "info");
+      Swal.fire('Changes are not saved', '', 'info');
     }
   });
- }
+};
 
-
- export const openModal = (id:string)=>{
+export const openModal = (id: string) => {
   const modal = document.querySelector(`#${id}`) as HTMLElement;
-  modal.setAttribute("class","hs-overlay-backdrop transition duration fixed inset-0 bg-gray-900 bg-opacity-50 dark:bg-opacity-80 dark:bg-neutral-900 z-50 open")
+  modal.setAttribute(
+    'class',
+    'hs-overlay-backdrop transition duration fixed inset-0 bg-gray-900 bg-opacity-50 dark:bg-opacity-80 dark:bg-neutral-900 z-50 open',
+  );
 
   // HSOverlay.open(modal)
   // HSOverlay.close(modal)
- }
+};
 
- export const closeModal = (id:string)=>{
+export const closeModal = (id: string) => {
   const modal = document.querySelector(`#${id}`) as HTMLElement;
-  modal.setAttribute("class","hs-overlay hidden size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none")
+  modal.setAttribute(
+    'class',
+    'hs-overlay hidden size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none',
+  );
   // HSOverlay.close(modal);
- }
+};

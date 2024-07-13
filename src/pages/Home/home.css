@@ -1,0 +1,120 @@
+
+.ezy__testimonial18 {
+	/* Bootstrap variables */
+	--bs-body-color: #1e2329;
+	--bs-body-bg: #fff;
+
+	/* easy frontend variables */
+	--ezy-theme-color: rgb(13, 110, 253);
+	--ezy-theme-color-rgb: 13, 110, 253;
+	--ezy-arrow-bg: #f5f8f8;
+
+	background-color: var(--bs-body-bg);
+	color: var(--bs-body-color);
+	padding: 60px 0;
+	overflow: hidden;
+	z-index: 1;
+}
+
+@media (min-width: 768px) {
+	.ezy__testimonial18 {
+		padding: 100px 0;
+	}
+}
+
+/* Gray Block Style */
+.gray .ezy__testimonial18,
+.ezy__testimonial18.gray {
+	/* Bootstrap variables */
+	--bs-body-bg: rgb(246, 246, 246);
+}
+
+/* Dark Gray Block Style */
+.dark-gray .ezy__testimonial18,
+.ezy__testimonial18.dark-gray {
+	/* Bootstrap variables */
+	--bs-body-color: rgb(241, 241, 241);
+	--bs-body-bg: rgb(30, 39, 53);
+
+	/* easy frontend variables */
+	--ezy-arrow-bg: rgb(11, 23, 39);
+}
+
+/* Dark Block Style */
+.dark .ezy__testimonial18,
+.ezy__testimonial18.dark {
+	/* Bootstrap variables */
+	--bs-body-color: rgb(255, 255, 255);
+	--bs-body-bg: rgb(11, 23, 39);
+
+	/* easy frontend variables */
+	--ezy-arrow-bg: rgb(30, 39, 53);
+}
+
+.ezy__testimonial18-quote {
+	position: absolute;
+	font-size: 100px;
+	color: rgba(var(--ezy-theme-color-rgb), 0.1);
+}
+
+.ezy__testimonial18-quote:nth-child(1) {
+	top: -6px;
+	left: 0;
+}
+
+.ezy__testimonial18-quote:nth-child(2) {
+	bottom: -6px;
+	right: 0;
+}
+
+.ezy__testimonial18-content {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+@media (min-width: 768px) {
+	.ezy__testimonial18-content {
+		font-size: 26px;
+	}
+}
+
+.ezy__testimonial18-item {
+	background-color: transparent;
+	border: none;
+}
+
+.ezy__testimonial18-name {
+	font-size: 20px !important;
+	color: var(--bs-body-color);
+}
+
+.ezy__testimonial18-title {
+	font-size: 16px !important;
+	color: var(--bs-body-color);
+	opacity: 0.8;
+}
+
+.ezy__testimonial18-img {
+	width: 80px;
+	height: 80px;
+}
+
+/* indicators */
+.ezy__testimonial18 .carousel-indicators {
+	margin: 0;
+	bottom: -10%;
+}
+
+.ezy__testimonial18 .carousel-indicators button {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: var(--bs-body-color);
+	opacity: 0.2;
+}
+
+.ezy__testimonial18 .carousel-indicators button.active {
+	background-color: rgba(var(--ezy-theme-color-rgb), 1) !important;
+	color: rgba(var(--ezy-theme-color-rgb), 1) !important;
+	opacity: 1;
+}
